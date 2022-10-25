@@ -1,0 +1,49 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    /* font-size: xx-large; */
+
+    font-size: 60px !important;
+    text-align: center;
+}
+
+/* Colors for brand */
+nav .navbar-brand .black
+{
+    color: #ffffff;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+nav .navbar-brand .center
+{
+    text-align:center;
+}
+
+nav .navbar-nav .font
+{
+    /* font-size:x-large; */
+    font-size: 30px !important;
+
+}
+
+tr:nth-child(1) {
+    counter-reset: rowNumber;
+  }
+  table tr {
+    counter-increment: rowNumber;
+  }
+  table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+  }

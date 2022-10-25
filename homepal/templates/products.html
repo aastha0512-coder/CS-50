@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Products
+{% endblock %}
+{% block card %}Add Product{% endblock %}
+
+{% block main %}
+
+<form action="/products" method="post" >
+    <div class="form-group mb-3" >
+        <label for="category">Category: </label>
+        <select class="ms-2" name="category" id="category"style='text-transform:uppercase'>
+            <option disabled selected value="">Select Category</option>
+            {% for option in category %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+    </div>
+        <div class="mb-3 form-group">
+            <label for="product">Product: </label>
+        <input class="ms-2" type="text" autocomplete="on" id="product" name="product" placeholder="Product Name" style='text-transform:uppercase'>
+
+    </div>
+    <div class="mb-3 form-group">
+        <label for="quantity">Quantity: </label>
+    <input type="number"class="ms-2"  autocomplete="on" id="product" name="quantity" placeholder="Quantity" min="1">
+    <select name="units" class="col-sm-2">
+        <option disabled selected value="">Choose Unit</option>
+        {% for unit in units %}
+            <option value="{{ unit }}">{{ unit }}</option>
+        {% endfor %}
+    </select>
+
+</div>
+<div class="mb-3 form-group">
+    <label for="datepurchased">Date purchased: </label>
+<input type="date"  id="datepurchased" name="datepurchased" class="ms-2">
+</div>
+<div class="mb-3 form-group">
+    <label for="bestbefore">Best Before: </label>
+<input type="date"  id="bestbefore" name="bestbefore" class="ms-2">
+<input type="checkbox" onclick="My_Date()" class="ms-3" name="bestbefore" value="Noexpirydate"><i><b>No Expiry Date</b></i></button>
+<script>
+    function My_Date() {
+
+        // Set disabled = true.
+        document.getElementById(
+          "bestbefore").disabled = true;
+    }
+</script>
+</div>
+
+<div class="form-group mb-3" >
+    <label for="locations">Location: </label>
+    <select name="locations" id="locations"class="ms-2">
+        <option disabled selected value="">Choose Location</option>
+        {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="mb-3 form-group">
+    <label for="price">Price: </label>
+<input type="number" autocomplete="on" id="price" name="price" placeholder="$" class="ms-2">
+</div>
+    <button class="btn btn-secondary" type="submit">Add Item</button>
+
+
+{% endblock %}

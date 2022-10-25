@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Consumption
+{% endblock %}
+
+{% block main %}
+
+<form action="/consumption" method="post">
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+              <th scope="col">Item Number</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+
+              <th scope="col">Expiring in</th>
+              <th scope="col">Location</th>
+              <th scope="col">Trash/Used</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for items in consumption %}
+            <tr >
+
+              <td scope="row"></td>
+              <td class="row-data" >{{ items["product"]}}  ({{ items["category"] }})</td>
+              <td class="row-data">{{ items["quantity"] }} {{ items["unit"] }} </td>
+
+              <td class="row-data">{{ items["days"]}} days</td>
+              <td class="row-data">{{ items["location"]}} </td>
+              <td><form action="/deregister" method="post"><input name="id" type="hidden" value="{{ items.id }}"><input type="submit" value="Deregister" class="btn btn-secondary"></form></td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+
+
+            <!-- <tfooter>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>Cash</th>
+                    <th>{{ cash }} </th>
+
+                  </tr>
+
+            </tfooter> -->
+
+    </table>
+    <script>
+function SomeDeleteRowFunction() {
+      // event.target will be the input element.
+      var td = event.target.parentNode;
+      var tr = td.parentNode; // the row to be removed
+      tr.parentNode.removeChild(tr);
+}
+// onclick="SomeDeleteRowFunction()
+  </script>
+
+
+{% endblock %}
